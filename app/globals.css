@@ -3,9 +3,9 @@
 @tailwind utilities;
 
 :root {
-  --font-display: "Space Grotesk", sans-serif;
-  --font-body: "Inter", sans-serif;
-  --font-mono: "JetBrains Mono", monospace;
+  --font-display: "Sriracha", cursive;
+  --font-body: "Sriracha", cursive;
+  --font-mono: "Sriracha", cursive;
 }
 
 html {
@@ -22,51 +22,59 @@ body {
   color: #ffffff;
 }
 
-/* Blueprint grid backdrop */
-.bp-grid {
-  background-image:
-    linear-gradient(rgba(37, 99, 235, 0.08) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(37, 99, 235, 0.08) 1px, transparent 1px);
-  background-size: 36px 36px;
-}
-
-.bp-grid-fine {
-  background-image:
-    linear-gradient(rgba(37, 99, 235, 0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(37, 99, 235, 0.05) 1px, transparent 1px);
-  background-size: 8px 8px;
-}
-
-/* Corner tick marks for schematic panels */
-.bp-panel {
-  position: relative;
-  border: 1px solid #d6e6f7;
-  background: linear-gradient(180deg, #f7fbfe 0%, #eef6fc 100%);
-}
-
-.bp-panel::before,
-.bp-panel::after {
-  content: "";
+/* Soft radial gradient blobs used behind the hero / CTA sections */
+.blob-field {
   position: absolute;
-  width: 10px;
-  height: 10px;
-  border-color: #2563eb;
+  inset: 0;
+  overflow: hidden;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.blob {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(60px);
   opacity: 0.55;
 }
 
-.bp-panel::before {
-  top: -1px;
-  left: -1px;
-  border-top: 2px solid #2563eb;
-  border-left: 2px solid #2563eb;
+/* Fine dotted backdrop, used sparingly instead of a hard grid */
+.dot-field {
+  background-image: radial-gradient(rgba(37, 99, 235, 0.16) 1.4px, transparent 1.4px);
+  background-size: 22px 22px;
 }
 
-.bp-panel::after {
-  bottom: -1px;
-  right: -1px;
-  border-bottom: 2px solid #1fbf8f;
-  border-right: 2px solid #1fbf8f;
+/* Elegant soft card */
+.soft-card {
+  background: #ffffff;
+  border: 1px solid #EAF1FA;
+  box-shadow: 0 1px 2px rgba(14, 42, 71, 0.04), 0 20px 40px -24px rgba(37, 99, 235, 0.18);
 }
+
+.soft-card:hover {
+  box-shadow: 0 1px 2px rgba(14, 42, 71, 0.04), 0 28px 50px -20px rgba(37, 99, 235, 0.28);
+}
+
+/* Floating skill badges around the hero avatar */
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+@keyframes float-slower {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-14px); }
+}
+.float-a { animation: float-slow 5s ease-in-out infinite; }
+.float-b { animation: float-slower 6.5s ease-in-out infinite; animation-delay: .8s; }
+.float-c { animation: float-slow 5.5s ease-in-out infinite; animation-delay: 1.6s; }
+.float-d { animation: float-slower 6s ease-in-out infinite; animation-delay: 0.4s; }
+
+/* Slow spinning dashed ring behind the avatar */
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+.spin-slow { animation: spin-slow 32s linear infinite; }
 
 /* Pulsing status dot */
 .pulse-dot {
@@ -92,7 +100,12 @@ body {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .pulse-dot::after {
+  .pulse-dot::after,
+  .float-a,
+  .float-b,
+  .float-c,
+  .float-d,
+  .spin-slow {
     animation: none;
   }
   html {
@@ -107,18 +120,17 @@ button:focus-visible {
   outline-offset: 3px;
 }
 
-.text-glow {
-  text-shadow: 0 0 30px rgba(37, 99, 235, 0.12);
-}
-
-.dotted-line {
-  background-image: linear-gradient(to right, #a9c8ea 50%, transparent 0%);
-  background-size: 8px 1px;
+/* Connecting line for the process timeline */
+.timeline-line {
+  background-image: linear-gradient(to right, #C9DFF6 0 60%, transparent 60%);
+  background-size: 14px 2px;
   background-repeat: repeat-x;
+  background-position: center;
 }
 
-.dotted-line-v {
-  background-image: linear-gradient(to bottom, #a9c8ea 50%, transparent 0%);
-  background-size: 1px 8px;
+.timeline-line-v {
+  background-image: linear-gradient(to bottom, #C9DFF6 0 60%, transparent 60%);
+  background-size: 2px 14px;
   background-repeat: repeat-y;
+  background-position: center;
 }
