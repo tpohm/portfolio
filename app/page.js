@@ -3,40 +3,40 @@
 import { useState } from "react";
 
 const NAV_LINKS = [
-  { href: "#services", label: "บริการ" },
-  { href: "#process", label: "ขั้นตอนทำงาน" },
-  { href: "#work", label: "ผลงาน" },
-  { href: "#guarantee", label: "การรับประกัน" },
-  { href: "#contact", label: "ติดต่อ" },
+  { href: "#services", label: "Services" },
+  { href: "#process", label: "Process" },
+  { href: "#work", label: "Work" },
+  { href: "#guarantee", label: "Guarantee" },
+  { href: "#contact", label: "Contact" },
 ];
 
 const SERVICES = [
   {
     icon: "◎",
-    title: "รับปรึกษาวางแผนระบบ",
-    desc: "วิเคราะห์โจทย์ธุรกิจ ออกแบบสถาปัตยกรรมระบบ เลือกเทคโนโลยีให้เหมาะกับงบและเป้าหมาย ก่อนลงมือสร้างจริงแม้แต่บรรทัดเดียว",
-    points: ["วิเคราะห์ requirement", "ออกแบบ system architecture", "ประเมินระยะเวลาและงบประมาณ"],
+    title: "System Consulting & Planning",
+    desc: "I analyze your business needs, design the system architecture, and choose the right technology for your budget and goals — before writing a single line of code.",
+    points: ["Requirements analysis", "System architecture design", "Timeline & budget estimation"],
   },
   {
     icon: "◇",
-    title: "เว็บไซต์ & เว็บแอปพลิเคชัน",
-    desc: "พัฒนาเว็บไซต์และเว็บแอปด้วย Next.js สำหรับงานที่ต้องการความเร็วและ SEO, PHP framework สำหรับระบบหลังบ้านเฉพาะทาง หรือ WordPress สำหรับเว็บที่ทีมคุณต้องอัปเดตเนื้อหาเอง",
-    points: ["Next.js — เร็ว, SEO ดี, สเกลง่าย", "PHP framework — ระบบหลังบ้านเฉพาะทาง", "WordPress — จัดการเนื้อหาเองได้"],
+    title: "Websites & Web Applications",
+    desc: "I build websites and web apps with Next.js for speed and SEO, PHP frameworks for specialized backend systems, or WordPress for sites your team can update yourselves.",
+    points: ["Next.js — fast, SEO-friendly, scalable", "PHP frameworks — specialized backend systems", "WordPress — manage your own content"],
   },
   {
     icon: "▢",
-    title: "แอปพลิเคชันมือถือ",
-    desc: "สร้างแอป iOS และ Android จาก codebase เดียวด้วย Flutter ลดเวลาพัฒนา ลดต้นทุนดูแลระยะยาว โดยไม่ลดทอนประสบการณ์การใช้งาน",
-    points: ["Flutter — iOS และ Android จากโค้ดเดียว", "เชื่อมต่อ API และระบบหลังบ้านเดิมได้", "ดูแลและอัปเดตต่อเนื่องหลังส่งมอบ"],
+    title: "Mobile Applications",
+    desc: "I build iOS and Android apps from a single codebase using Flutter — cutting development time and long-term maintenance cost without compromising the user experience.",
+    points: ["Flutter — iOS & Android from one codebase", "Connects to your existing APIs & backend", "Ongoing support & updates after launch"],
   },
 ];
 
 const PROCESS = [
-  { step: "01", title: "รับฟังโจทย์", desc: "คุยเป้าหมาย งบประมาณ และ timeline ให้ชัดตั้งแต่ต้น" },
-  { step: "02", title: "วางแผนระบบ", desc: "ออกแบบ architecture และเลือกสแต็กที่เหมาะกับงาน" },
-  { step: "03", title: "พัฒนา", desc: "ลงมือสร้างเป็นรอบสั้น ๆ ให้เห็นความคืบหน้าตลอดทาง" },
-  { step: "04", title: "ทดสอบ", desc: "ตรวจสอบการทำงานและความปลอดภัยก่อนใช้งานจริง" },
-  { step: "05", title: "ส่งมอบ & ดูแลต่อ", desc: "ขึ้นระบบจริงพร้อมคู่มือ และซัพพอร์ตหลังส่งมอบ" },
+  { step: "01", title: "Discovery", desc: "Understand your goals, budget, and timeline right from the start" },
+  { step: "02", title: "System Design", desc: "Design the architecture and choose the right stack for the job" },
+  { step: "03", title: "Build", desc: "Develop in short cycles so you can see progress along the way" },
+  { step: "04", title: "Test", desc: "Check functionality and security before going live" },
+  { step: "05", title: "Launch & Support", desc: "Deploy with documentation, plus support after handover" },
 ];
 
 const PROJECTS = [
@@ -44,37 +44,37 @@ const PROJECTS = [
     name: "TUTORRUS",
     url: "https://online.tutorrusstudy.com/",
     category: "E-LEARNING / LMS",
-    desc: "แพลตฟอร์มเรียนออนไลน์สำหรับสถาบันติวสอบเข้ามหาวิทยาลัย รองรับคอร์สเรียน วิดีโอ และระบบชำระเงิน",
+    desc: "An online learning platform for a university entrance exam tutoring school, supporting courses, video lessons, and payments.",
   },
   {
     name: "THAC",
     url: "https://thac.or.th/th",
     category: "INSTITUTIONAL",
-    desc: "เว็บไซต์สถาบันอนุญาโตตุลาการไทย พร้อมเครื่องมือค้นหาผู้ประนอมข้อพิพาทและคำนวณค่าธรรมเนียม",
+    desc: "Website for the Thailand Arbitration Center, with tools to search for arbitrators and calculate fees.",
   },
   {
     name: "Pink School of Finance",
     url: "https://www.pinkschools.com/",
     category: "EDU / FINANCE",
-    desc: "เว็บไซต์สถาบันติวสอบ CFA ออนไลน์ สำหรับผู้บริหารและบุคลากรสายการเงิน",
+    desc: "Website for an online CFA exam prep school, built for finance professionals and executives.",
   },
   {
     name: "Dhipaya Group Holdings",
     url: "https://www.dhipayagroup.co.th/",
     category: "CORPORATE",
-    desc: "เว็บไซต์องค์กรของบริษัทโฮลดิ้งด้านประกันภัยที่จดทะเบียนในตลาดหลักทรัพย์แห่งประเทศไทย",
+    desc: "Corporate website for a publicly listed insurance holding company on the Stock Exchange of Thailand.",
   },
   {
-    name: "บัวคอนกรีต",
+    name: "Bua Concrete",
     url: "https://buaconcrete.asiacement.co.th/",
     category: "E-COMMERCE",
-    desc: "ระบบสั่งซื้อคอนกรีตออนไลน์ พร้อมระบบสมาชิกและขั้นตอนการชำระเงินสำหรับลูกค้าโครงการ",
+    desc: "An online concrete ordering platform, with member accounts and a payment flow for project customers.",
   },
   {
     name: "CCC — Calories Credit Challenge",
     url: "https://ccc.mots.go.th/",
     category: "GOV.TECH",
-    desc: "แพลตฟอร์มสะสมแต้มออกกำลังกายระดับประเทศ ภายใต้กระทรวงการท่องเที่ยวและกีฬา พร้อมระบบเข้าสู่ระบบผ่าน LINE",
+    desc: "A nationwide exercise rewards platform under Thailand's Ministry of Tourism and Sports, with LINE login.",
   },
 ];
 
@@ -97,7 +97,7 @@ function StatusDot({ className = "" }) {
 function Eyebrow({ children, tone = "signal" }) {
   const toneCls = tone === "mint" ? "text-mint bg-mint/10 border-mint/20" : "text-signal bg-signal/10 border-signal/20";
   return (
-    <span className={`inline-flex items-center gap-2 rounded-full border px-3 py-1 font-mono text-[11px] tracking-widest ${toneCls}`}>
+    <span className={`inline-flex items-center gap-2 rounded-full border px-4 py-1.5 font-mono text-[11px] tracking-widest ${toneCls}`}>
       {children}
     </span>
   );
@@ -122,8 +122,8 @@ export default function Home() {
       {/* NAV */}
       <header className="sticky top-0 z-50 border-b border-slate-100 bg-white/85 backdrop-blur">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-          <a href="#top" className="flex items-center gap-2 font-display text-lg font-bold tracking-tight text-ink">
-            <span className="flex h-9 w-9 items-center justify-center rounded-full bg-gradient-to-br from-signal to-mint text-sm font-bold text-white shadow-md shadow-signal/20">
+          <a href="#top" className="flex items-center gap-2 font-display text-xl tracking-tight text-ink">
+            <span className="flex h-10 w-10 items-center justify-center rounded-[18px] bg-gradient-to-br from-signal to-mint text-base font-bold text-white shadow-md shadow-signal/20">
               Ω
             </span>
             Ohm
@@ -146,13 +146,13 @@ export default function Home() {
             href="https://line.me/ti/p/zERBmbhlRM"
             target="_blank"
             rel="noreferrer"
-            className="hidden rounded-full bg-signal px-5 py-2.5 text-[14px] font-semibold text-white shadow-md shadow-signal/25 transition-transform hover:-translate-y-0.5 md:inline-block"
+            className="hidden rounded-full bg-signal px-6 py-3 text-[14px] font-semibold text-white shadow-md shadow-signal/25 transition-transform hover:-translate-y-0.5 md:inline-block"
           >
-            คุยผ่าน LINE
+            Chat on LINE
           </a>
 
           <button
-            aria-label="เปิดเมนู"
+            aria-label="Open menu"
             className="text-ink md:hidden"
             onClick={() => setMenuOpen((v) => !v)}
           >
@@ -179,9 +179,9 @@ export default function Home() {
                 href="https://line.me/ti/p/zERBmbhlRM"
                 target="_blank"
                 rel="noreferrer"
-                className="mt-2 rounded-full bg-signal px-4 py-2.5 text-center text-sm font-semibold text-white"
+                className="mt-2 rounded-full bg-signal px-4 py-3 text-center text-sm font-semibold text-white"
               >
-                คุยผ่าน LINE
+                Chat on LINE
               </a>
             </div>
           </div>
@@ -201,19 +201,20 @@ export default function Home() {
           <div>
             <Eyebrow>FULL-STACK DEVELOPER &amp; SYSTEM CONSULTANT</Eyebrow>
 
-            <h1 className="mt-6 font-display text-4xl font-bold leading-[1.15] tracking-tight sm:text-5xl md:text-[3.4rem]">
-              สวัสดีครับ ผม{" "}
+            <h1 className="mt-6 font-display text-4xl leading-[1.2] tracking-tight sm:text-5xl md:text-[3.4rem]">
+              Hi, I&apos;m{" "}
               <span className="bg-gradient-to-r from-signal to-mint bg-clip-text text-transparent">Ohm</span>
               <br />
-              รับวางระบบ สร้างเว็บ และแอป
+              I build systems, websites,
               <br />
-              ที่พร้อมใช้งานจริง
+              and apps that actually work
             </h1>
 
             <p className="mt-6 max-w-lg text-base leading-relaxed text-muted sm:text-lg">
-              รับปรึกษาวางแผนระบบ พัฒนาเว็บไซต์ เว็บแอปพลิเคชัน และแอปมือถือ
-              ให้ธุรกิจ ตั้งแต่ขั้นตอนออกแบบสถาปัตยกรรมไปจนถึงส่งมอบใช้งานจริง
-              พร้อมรับประกันคุณภาพทุกงาน
+              I help businesses plan systems, and build websites, web
+              applications, and mobile apps — from architecture design
+              through to real-world deployment. Every project comes with
+              a quality guarantee.
             </p>
 
             <div className="mt-10 flex flex-wrap items-center gap-4">
@@ -221,30 +222,30 @@ export default function Home() {
                 href="https://line.me/ti/p/zERBmbhlRM"
                 target="_blank"
                 rel="noreferrer"
-                className="rounded-full bg-signal px-7 py-3.5 text-sm font-semibold text-white shadow-lg shadow-signal/30 transition-transform hover:-translate-y-0.5"
+                className="rounded-full bg-signal px-8 py-4 text-sm font-semibold text-white shadow-lg shadow-signal/30 transition-transform hover:-translate-y-0.5"
               >
-                ปรึกษาโปรเจกต์ทาง LINE
+                Chat on LINE
               </a>
               <a
                 href="#work"
-                className="rounded-full border border-slate-200 px-7 py-3.5 text-sm font-semibold text-ink transition-colors hover:border-signal/50 hover:text-signal"
+                className="rounded-full border border-slate-200 px-8 py-4 text-sm font-semibold text-ink transition-colors hover:border-signal/50 hover:text-signal"
               >
-                ดูผลงานที่ผ่านมา
+                View my work
               </a>
             </div>
 
             <div className="mt-14 grid max-w-md grid-cols-3 gap-6 border-t border-slate-100 pt-8">
               <div>
-                <div className="font-display text-2xl font-bold text-ink">6+</div>
-                <div className="mt-1 text-[12px] text-muted">โปรเจกต์ที่ส่งมอบแล้ว</div>
+                <div className="font-display text-2xl text-ink">6+</div>
+                <div className="mt-1 text-[12px] text-muted">Projects delivered</div>
               </div>
               <div>
-                <div className="font-display text-2xl font-bold text-ink">3</div>
-                <div className="mt-1 text-[12px] text-muted">สแต็กเทคโนโลยีหลัก</div>
+                <div className="font-display text-2xl text-ink">3</div>
+                <div className="mt-1 text-[12px] text-muted">Core tech stacks</div>
               </div>
               <div>
-                <div className="font-display text-2xl font-bold text-ink">100%</div>
-                <div className="mt-1 text-[12px] text-muted">รับประกันคุณภาพ</div>
+                <div className="font-display text-2xl text-ink">100%</div>
+                <div className="mt-1 text-[12px] text-muted">Quality guaranteed</div>
               </div>
             </div>
           </div>
@@ -264,15 +265,15 @@ export default function Home() {
             {BADGES.map((b) => (
               <div
                 key={b.label}
-                className={`soft-card absolute ${b.cls} ${b.anim} rounded-full px-4 py-2 text-[13px] font-semibold text-ink`}
+                className={`soft-card absolute ${b.cls} ${b.anim} rounded-full px-5 py-2.5 text-[13px] font-semibold text-ink`}
               >
                 {b.label}
               </div>
             ))}
 
-            <div className="soft-card absolute bottom-[-6px] left-1/2 flex -translate-x-1/2 items-center gap-2 rounded-full px-4 py-2 text-[12px] font-semibold text-mint">
+            <div className="soft-card absolute bottom-[-6px] left-1/2 flex -translate-x-1/2 items-center gap-2 rounded-full px-5 py-2.5 text-[12px] font-semibold text-mint">
               <StatusDot />
-              พร้อมรับงานใหม่
+              Available for new projects
             </div>
           </div>
         </div>
@@ -283,18 +284,18 @@ export default function Home() {
         <div className="mx-auto max-w-6xl px-6 py-20 sm:py-28">
           <div className="mb-14 max-w-2xl">
             <Eyebrow>SERVICES</Eyebrow>
-            <h2 className="mt-4 font-display text-2xl font-bold tracking-tight sm:text-3xl">
-              สามบริการหลักที่ครอบคลุมงานตั้งแต่คิดจนถึงส่งมอบ
+            <h2 className="mt-4 font-display text-2xl tracking-tight sm:text-3xl">
+              Three core services covering everything from planning to delivery
             </h2>
           </div>
 
           <div className="grid gap-6 md:grid-cols-3">
             {SERVICES.map((s) => (
-              <div key={s.title} className="soft-card flex flex-col rounded-3xl p-7 transition-shadow">
-                <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-signal/10 text-2xl text-signal">
+              <div key={s.title} className="soft-card flex flex-col rounded-[32px] p-8 transition-shadow">
+                <span className="flex h-14 w-14 items-center justify-center rounded-[20px] bg-signal/10 text-2xl text-signal">
                   {s.icon}
                 </span>
-                <h3 className="mt-5 font-display text-xl font-semibold text-ink">{s.title}</h3>
+                <h3 className="mt-5 font-display text-xl text-ink">{s.title}</h3>
                 <p className="mt-3 text-sm leading-relaxed text-muted">{s.desc}</p>
                 <ul className="mt-5 flex flex-col gap-2.5 border-t border-slate-100 pt-5">
                   {s.points.map((p) => (
@@ -315,8 +316,8 @@ export default function Home() {
         <div className="mx-auto max-w-6xl px-6 py-20 sm:py-28">
           <div className="mb-16 max-w-2xl">
             <Eyebrow tone="mint">PROCESS</Eyebrow>
-            <h2 className="mt-4 font-display text-2xl font-bold tracking-tight sm:text-3xl">
-              ขั้นตอนทำงาน 5 ช่วง จากโจทย์ถึงของจริงที่ใช้งานได้
+            <h2 className="mt-4 font-display text-2xl tracking-tight sm:text-3xl">
+              A 5-stage process, from your idea to something real people can use
             </h2>
           </div>
 
@@ -329,7 +330,7 @@ export default function Home() {
                     {p.step}
                   </span>
                 </div>
-                <h3 className="mt-4 font-display text-base font-semibold text-ink">{p.title}</h3>
+                <h3 className="mt-4 font-display text-base text-ink">{p.title}</h3>
                 <p className="mt-2 text-[13px] leading-relaxed text-muted">{p.desc}</p>
               </div>
             ))}
@@ -340,27 +341,28 @@ export default function Home() {
       {/* GUARANTEE */}
       <section id="guarantee" className="border-t border-slate-100 bg-panel/50">
         <div className="mx-auto max-w-6xl px-6 py-20 sm:py-28">
-          <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-signal to-mint p-8 text-white sm:p-12">
+          <div className="relative overflow-hidden rounded-[40px] bg-gradient-to-br from-signal to-mint p-8 text-white sm:p-12">
             <div className="blob-field opacity-40">
               <div className="blob h-[260px] w-[260px] bg-white/30 -top-24 right-10" />
             </div>
             <div className="relative grid gap-10 md:grid-cols-[1.1fr_1fr]">
               <div>
-                <span className="inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/10 px-3 py-1 font-mono text-[11px] tracking-widest">
+                <span className="inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/10 px-4 py-1.5 font-mono text-[11px] tracking-widest">
                   QUALITY GUARANTEE
                 </span>
-                <h2 className="mt-4 font-display text-2xl font-bold tracking-tight sm:text-3xl">
-                  รับประกันคุณภาพทุกงานที่ส่งมอบ
+                <h2 className="mt-4 font-display text-2xl tracking-tight sm:text-3xl">
+                  Every project comes with a quality guarantee
                 </h2>
                 <p className="mt-4 text-sm leading-relaxed text-white/90 sm:text-base">
-                  ทุกโปรเจกต์ผ่านการทดสอบก่อนขึ้นระบบจริง และมีช่วงดูแลหลังส่งมอบ
-                  เพื่อแก้ไขข้อผิดพลาดที่เกิดจากการพัฒนา โดยไม่มีค่าใช้จ่ายเพิ่มเติม
-                  ในระยะเวลาที่ตกลงกันไว้ตั้งแต่ต้นโครงการ
+                  Every project is tested before going live, and includes a
+                  support period after delivery to fix any development-related
+                  issues — at no extra cost, within the agreed timeframe from
+                  the start of the project.
                 </p>
               </div>
               <div className="grid grid-cols-2 gap-4">
-                {["ทดสอบก่อนส่งมอบ", "แก้ไขบั๊กหลังส่งมอบ", "คู่มือใช้งานระบบ", "ให้คำปรึกษาต่อเนื่อง"].map((t) => (
-                  <div key={t} className="rounded-2xl bg-white/10 p-4 backdrop-blur">
+                {["Tested before launch", "Bug fixes after delivery", "System documentation", "Ongoing consultation"].map((t) => (
+                  <div key={t} className="rounded-[22px] bg-white/10 p-4 backdrop-blur">
                     <div className="text-xl">✓</div>
                     <div className="mt-1 text-[12px] text-white/90">{t}</div>
                   </div>
@@ -377,13 +379,13 @@ export default function Home() {
           <div className="mb-14 flex flex-wrap items-end justify-between gap-4">
             <div className="max-w-2xl">
               <Eyebrow>WORK</Eyebrow>
-              <h2 className="mt-4 font-display text-2xl font-bold tracking-tight sm:text-3xl">
-                ผลงานที่ผ่านมา ยังทำงานอยู่จริงวันนี้
+              <h2 className="mt-4 font-display text-2xl tracking-tight sm:text-3xl">
+                Past projects — still live and running today
               </h2>
             </div>
             <div className="flex items-center gap-2 text-[13px] font-medium text-muted">
               <StatusDot />
-              {PROJECTS.length} ระบบที่ยังใช้งานอยู่
+              {PROJECTS.length} systems currently live
             </div>
           </div>
 
@@ -394,14 +396,14 @@ export default function Home() {
                 href={p.url}
                 target="_blank"
                 rel="noreferrer"
-                className="soft-card group flex flex-col justify-between overflow-hidden rounded-3xl transition-transform hover:-translate-y-1"
+                className="soft-card group flex flex-col justify-between overflow-hidden rounded-[32px] transition-transform hover:-translate-y-1"
               >
                 <div
                   className={`h-2 w-full bg-gradient-to-r ${
                     i % 2 === 0 ? "from-signal to-signal2" : "from-mint to-signal2"
                   }`}
                 />
-                <div className="flex flex-1 flex-col justify-between p-6">
+                <div className="flex flex-1 flex-col justify-between p-7">
                   <div>
                     <div className="flex items-center justify-between">
                       <span className="rounded-full bg-panel px-3 py-1 font-mono text-[11px] tracking-wider text-muted">
@@ -412,13 +414,13 @@ export default function Home() {
                         LIVE
                       </span>
                     </div>
-                    <h3 className="mt-4 font-display text-lg font-semibold text-ink group-hover:text-signal">
+                    <h3 className="mt-4 font-display text-lg text-ink group-hover:text-signal">
                       {p.name}
                     </h3>
                     <p className="mt-2 text-[13px] leading-relaxed text-muted">{p.desc}</p>
                   </div>
                   <div className="mt-5 flex items-center gap-2 border-t border-slate-100 pt-4 text-[13px] font-semibold text-signal">
-                    เยี่ยมชมเว็บไซต์
+                    Visit website
                     <span className="flex h-6 w-6 items-center justify-center rounded-full bg-signal/10 transition-transform group-hover:translate-x-1">
                       →
                     </span>
@@ -440,11 +442,12 @@ export default function Home() {
         <div className="relative mx-auto max-w-6xl px-6 py-20 sm:py-28">
           <div className="mb-14 max-w-2xl">
             <Eyebrow tone="mint">CONTACT</Eyebrow>
-            <h2 className="mt-4 font-display text-2xl font-bold tracking-tight sm:text-3xl">
-              เริ่มคุยโปรเจกต์ของคุณได้เลย
+            <h2 className="mt-4 font-display text-2xl tracking-tight sm:text-3xl">
+              Let&apos;s talk about your project
             </h2>
             <p className="mt-4 text-sm leading-relaxed text-muted sm:text-base">
-              ทักมาคุยรายละเอียดงานได้ทั้งทาง LINE หรืออีเมล ตอบกลับไวและปรึกษาได้ฟรีในเบื้องต้น
+              Reach out on LINE or email — quick replies, and an initial
+              consultation is free.
             </p>
           </div>
 
@@ -453,41 +456,41 @@ export default function Home() {
               href="https://line.me/ti/p/zERBmbhlRM"
               target="_blank"
               rel="noreferrer"
-              className="soft-card flex flex-col justify-between rounded-3xl p-7 transition-transform hover:-translate-y-1"
+              className="soft-card flex flex-col justify-between rounded-[32px] p-7 transition-transform hover:-translate-y-1"
             >
               <div>
-                <span className="flex h-11 w-11 items-center justify-center rounded-2xl bg-mint/10 text-lg text-mint">
+                <span className="flex h-12 w-12 items-center justify-center rounded-[18px] bg-mint/10 text-lg text-mint">
                   💬
                 </span>
-                <p className="mt-4 font-display text-lg font-semibold text-ink">คุยผ่าน LINE</p>
-                <p className="mt-2 text-[13px] text-muted">ตอบกลับเร็วที่สุด เหมาะกับคำถามเร่งด่วน</p>
+                <p className="mt-4 font-display text-lg text-ink">Chat on LINE</p>
+                <p className="mt-2 text-[13px] text-muted">Fastest way to reach me, great for quick questions</p>
               </div>
               <span className="mt-6 text-[13px] font-semibold text-mint">line.me/ti/p/zERBmbhlRM →</span>
             </a>
 
             <button
               onClick={copyEmail}
-              className="soft-card flex flex-col justify-between rounded-3xl p-7 text-left transition-transform hover:-translate-y-1"
+              className="soft-card flex flex-col justify-between rounded-[32px] p-7 text-left transition-transform hover:-translate-y-1"
             >
               <div>
-                <span className="flex h-11 w-11 items-center justify-center rounded-2xl bg-signal/10 text-lg text-signal">
+                <span className="flex h-12 w-12 items-center justify-center rounded-[18px] bg-signal/10 text-lg text-signal">
                   ✉️
                 </span>
-                <p className="mt-4 font-display text-lg font-semibold text-ink">tossapon.ph@gmail.com</p>
-                <p className="mt-2 text-[13px] text-muted">เหมาะกับรายละเอียดงานยาว ๆ หรือส่งไฟล์</p>
+                <p className="mt-4 font-display text-lg text-ink">tossapon.ph@gmail.com</p>
+                <p className="mt-2 text-[13px] text-muted">Best for longer project details or sending files</p>
               </div>
               <span className="mt-6 text-[13px] font-semibold text-signal">
-                {copied ? "คัดลอกแล้ว ✓" : "คลิกเพื่อคัดลอกอีเมล →"}
+                {copied ? "Copied ✓" : "Click to copy email →"}
               </span>
             </button>
 
-            <div className="soft-card flex flex-col items-center justify-center gap-3 rounded-3xl p-7">
+            <div className="soft-card flex flex-col items-center justify-center gap-3 rounded-[32px] p-7">
               <span className="font-mono text-[11px] tracking-wider text-muted">SCAN TO ADD LINE</span>
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src="/qr-line.jpg"
-                alt="QR code สำหรับเพิ่มเพื่อน LINE ของ Ohm"
-                className="h-36 w-36 rounded-2xl border border-slate-100 bg-white p-2"
+                alt="QR code to add Ohm on LINE"
+                className="h-36 w-36 rounded-[22px] border border-slate-100 bg-white p-2"
               />
             </div>
           </div>
@@ -500,7 +503,7 @@ export default function Home() {
           <span>© {new Date().getFullYear()} Ohm — Software Developer &amp; System Architect</span>
           <span className="flex items-center gap-2 font-medium text-mint">
             <StatusDot />
-            พร้อมรับงานใหม่
+            Available for new projects
           </span>
         </div>
       </footer>
