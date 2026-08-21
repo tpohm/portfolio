@@ -69,6 +69,16 @@ body {
 .float-c { animation: float-slow 5.5s ease-in-out infinite; animation-delay: 1.6s; }
 .float-d { animation: float-slower 6s ease-in-out infinite; animation-delay: 0.4s; }
 
+@keyframes float-banner {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+}
+.float-banner { animation: float-banner 7s ease-in-out infinite; }
+
+.device-shadow {
+  filter: drop-shadow(0 30px 40px rgba(14, 42, 71, 0.16));
+}
+
 /* Slow spinning dashed ring behind the avatar */
 @keyframes spin-slow {
   from { transform: rotate(0deg); }
@@ -105,6 +115,7 @@ body {
   .float-b,
   .float-c,
   .float-d,
+  .float-banner,
   .spin-slow {
     animation: none;
   }
