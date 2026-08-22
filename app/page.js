@@ -116,37 +116,64 @@ const PROJECTS = [
     name: "TUTORRUS",
     url: "https://online.tutorrusstudy.com/",
     category: "E-LEARNING / LMS",
+    type: "web",
     desc: "An online learning platform for a university entrance exam tutoring school, supporting courses, video lessons, and payments.",
   },
   {
     name: "THAC",
     url: "https://thac.or.th/th",
     category: "INSTITUTIONAL",
+    type: "web",
     desc: "Website for the Thailand Arbitration Center, with tools to search for arbitrators and calculate fees.",
   },
   {
     name: "Pink School of Finance",
     url: "https://www.pinkschools.com/",
     category: "EDU / FINANCE",
+    type: "web",
     desc: "Website for an online CFA exam prep school, built for finance professionals and executives.",
   },
   {
     name: "Dhipaya Group Holdings",
     url: "https://www.dhipayagroup.co.th/",
     category: "CORPORATE",
+    type: "web",
     desc: "Corporate website for a publicly listed insurance holding company on the Stock Exchange of Thailand.",
   },
   {
     name: "Bua Concrete",
     url: "https://buaconcrete.asiacement.co.th/",
     category: "E-COMMERCE",
+    type: "web",
     desc: "An online concrete ordering platform, with member accounts and a payment flow for project customers.",
   },
   {
     name: "CCC — Calories Credit Challenge",
     url: "https://ccc.mots.go.th/",
     category: "GOV.TECH",
+    type: "web",
     desc: "A nationwide exercise rewards platform under Thailand's Ministry of Tourism and Sports, with LINE login.",
+  },
+  {
+    name: "CCC Mobile App",
+    url: "https://play.google.com/store/apps/details?id=th.go.mots.ccc&hl=th",
+    category: "MOBILE APP",
+    type: "app",
+    desc: "Companion Android app for the CCC exercise rewards platform, with GPS activity tracking, a leaderboard, and Health Connect integration.",
+  },
+  {
+    name: "Smart People Management",
+    url: "https://play.google.com/store/apps/details?id=com.tmadigital.samitivej&hl=th",
+    category: "MOBILE APP",
+    type: "app",
+    desc: "An HR management app built for Samitivej, covering clock in/out, employee self-service, and cloud-based people management.",
+  },
+  {
+    name: "Bua Concrete App",
+    url: "https://play.google.com/store/apps/details?id=th.co.asiacement.buaconcrete",
+    category: "MOBILE APP",
+    type: "app",
+    desc: "Companion Android app for ordering concrete, tracking real-time delivery, in-app payment, and a loyalty points program.",
   },
 ];
 
@@ -168,41 +195,111 @@ function Eyebrow({ children, tone = "signal" }) {
   );
 }
 
-/* Miniature abstract "website preview" used inside the device mockups.
-   Built entirely from divs/gradients so no real screenshots are needed. */
-function MiniSite({ dense = true }) {
+/* A consistent "real-looking" website mockup shown inside every device frame.
+   Built entirely from divs/gradients (no screenshots), sized per device tier
+   so text stays crisp at laptop, tablet, and phone scale. */
+const SITE_SIZE = {
+  lg: {
+    pad: "p-5",
+    logoDot: "h-6 w-6 text-[11px]",
+    wordmark: "text-[13px]",
+    showNav: true,
+    navGap: "gap-5",
+    navText: "text-[11px]",
+    navBtn: "text-[11px] px-4 py-2",
+    heroPad: "p-6",
+    headline: "text-[22px] leading-[1.15]",
+    sub: "text-[11px] mt-2",
+    cta: "text-[11px] px-5 py-2.5 mt-4",
+    features: true,
+    featureCols: "grid-cols-3",
+    featureIcon: "h-5 w-5 text-[10px]",
+  },
+  md: {
+    pad: "p-3",
+    logoDot: "h-4 w-4 text-[7px]",
+    wordmark: "text-[8px]",
+    showNav: false,
+    navGap: "",
+    navText: "",
+    navBtn: "text-[7px] px-2.5 py-1.5",
+    heroPad: "p-3",
+    headline: "text-[11px] leading-[1.2]",
+    sub: "text-[6.5px] mt-1.5",
+    cta: "text-[7px] px-3 py-1.5 mt-2.5",
+    features: true,
+    featureCols: "grid-cols-1",
+    featureIcon: "h-3 w-3 text-[6px]",
+  },
+  sm: {
+    pad: "p-2",
+    logoDot: "h-3 w-3 text-[5px]",
+    wordmark: "text-[6px]",
+    showNav: false,
+    navGap: "",
+    navText: "",
+    navBtn: "text-[5.5px] px-2 py-1",
+    heroPad: "p-2.5",
+    headline: "text-[8px] leading-[1.2]",
+    sub: "text-[5px] mt-1",
+    cta: "text-[5.5px] px-2.5 py-1 mt-2",
+    features: false,
+    featureCols: "",
+    featureIcon: "",
+  },
+};
+
+function MiniSite({ size = "lg" }) {
+  const s = SITE_SIZE[size];
   return (
-    <div className="flex h-full w-full flex-col bg-white p-[6%]">
-      <div className="flex items-center justify-between">
-        <div className="flex items-center gap-[3%]">
-          <span className="h-[10%] w-[10%] min-h-[10px] min-w-[10px] rounded-full bg-gradient-to-br from-signal to-mint" />
-          {dense && (
-            <>
-              <span className="h-[6%] w-[10%] rounded-full bg-slate-200" />
-              <span className="h-[6%] w-[10%] rounded-full bg-slate-200" />
-              <span className="h-[6%] w-[10%] rounded-full bg-slate-200" />
-            </>
-          )}
+    <div className="flex h-full w-full flex-col bg-white">
+      <div className={`flex items-center justify-between ${s.pad}`}>
+        <div className="flex items-center gap-1.5">
+          <span
+            className={`flex items-center justify-center rounded-full bg-gradient-to-br from-signal to-mint font-bold text-white ${s.logoDot}`}
+          >
+            Ω
+          </span>
+          <span className={`font-bold tracking-wide text-ink ${s.wordmark}`} style={{ fontFamily: "var(--font-display)" }}>
+            OHM
+          </span>
         </div>
-        <span className="h-[8%] w-[16%] rounded-full bg-signal" />
-      </div>
-
-      <div className="mt-[8%] flex flex-1 flex-col justify-center gap-[6%]">
-        <span className="h-[9%] w-[70%] rounded-full bg-slate-800/80" />
-        <span className="h-[9%] w-[55%] rounded-full bg-slate-800/80" />
-        <span className="mt-[2%] h-[7%] w-[35%] rounded-full bg-slate-200" />
-        <span className="mt-[4%] h-[14%] w-[30%] rounded-full bg-gradient-to-r from-signal to-mint" />
-      </div>
-
-      <div className={`mt-[8%] grid gap-[4%] ${dense ? "grid-cols-3" : "grid-cols-1"}`}>
-        {(dense ? [0, 1, 2] : [0]).map((i) => (
-          <div key={i} className="rounded-[14%] border border-slate-100 p-[8%]">
-            <span className="block h-[16%] w-[40%] rounded-full bg-mint/70" />
-            <span className="mt-[10%] block h-[8%] w-[80%] rounded-full bg-slate-200" />
-            <span className="mt-[6%] block h-[8%] w-[60%] rounded-full bg-slate-200" />
+        {s.showNav && (
+          <div className={`flex items-center font-medium text-slate-400 ${s.navGap} ${s.navText}`}>
+            <span>Work</span>
+            <span>Services</span>
+            <span>Contact</span>
           </div>
-        ))}
+        )}
+        <span className={`rounded-full bg-ink font-semibold text-white ${s.navBtn}`}>Start</span>
       </div>
+
+      <div
+        className={`relative mx-2 mb-2 flex flex-1 flex-col justify-end overflow-hidden rounded-2xl bg-gradient-to-br from-[#0E2A47] via-[#17406B] to-[#1FBF8F] ${s.heroPad}`}
+      >
+        <div className="absolute -right-6 -top-6 h-24 w-24 rounded-full bg-white/10" />
+        <div className="absolute right-3 top-3 h-10 w-10 rounded-2xl border-2 border-white/20" />
+        <span className={`relative max-w-[75%] font-bold text-white ${s.headline}`} style={{ fontFamily: "var(--font-display)" }}>
+          Build Your Brand Online.
+        </span>
+        <span className={`relative max-w-[65%] text-white/70 ${s.sub}`}>
+          Websites &amp; apps designed to convert.
+        </span>
+        <span className={`relative w-fit rounded-full bg-white font-semibold text-ink ${s.cta}`}>Get Started →</span>
+      </div>
+
+      {s.features && (
+        <div className={`grid gap-1.5 px-2 pb-2 ${s.featureCols}`}>
+          {(s.featureCols === "grid-cols-3" ? [0, 1, 2] : [0]).map((i) => (
+            <div key={i} className="flex items-center gap-1.5 rounded-xl border border-slate-100 p-1.5">
+              <span className={`flex shrink-0 items-center justify-center rounded-full bg-mint/15 text-mint ${s.featureIcon}`}>
+                ✓
+              </span>
+              <span className="h-1 w-full rounded-full bg-slate-200" />
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 }
@@ -224,7 +321,7 @@ function DeviceShowcase() {
             <span className="h-[10px] w-[10px] rounded-full bg-green-400" />
           </div>
           <div className="aspect-[16/10] w-full">
-            <MiniSite dense />
+            <MiniSite size="lg" />
           </div>
         </div>
         <div className="mx-auto h-[3%] w-full rounded-b-[6%] bg-gradient-to-b from-slate-700 to-slate-800" />
@@ -235,7 +332,7 @@ function DeviceShowcase() {
       <div className="absolute bottom-[2%] left-[0%] z-20 w-[26%] -rotate-6">
         <div className="overflow-hidden rounded-[14%] border-[6%] border-slate-800 bg-slate-800 shadow-[0_30px_60px_-15px_rgba(14,42,71,0.5)]">
           <div className="aspect-[3/4] w-full">
-            <MiniSite dense={false} />
+            <MiniSite size="md" />
           </div>
         </div>
       </div>
@@ -244,7 +341,7 @@ function DeviceShowcase() {
       <div className="absolute bottom-[-2%] right-[2%] z-20 w-[15%] rotate-6">
         <div className="overflow-hidden rounded-[16%] border-[8%] border-slate-800 bg-slate-800 shadow-[0_30px_60px_-15px_rgba(14,42,71,0.5)]">
           <div className="aspect-[9/19] w-full">
-            <MiniSite dense={false} />
+            <MiniSite size="sm" />
           </div>
         </div>
       </div>
@@ -345,68 +442,71 @@ export default function Home() {
         )}
       </header>
 
-      {/* HERO */}
+      {/* HERO — unified banner: copy + device showcase side by side */}
       <section id="top" className="relative overflow-hidden">
         <div className="blob-field">
           <div className="blob h-[420px] w-[420px] bg-signal/15 -top-40 -left-32" />
           <div className="blob h-[380px] w-[380px] bg-mint/15 top-10 right-[-140px]" />
         </div>
 
-        <div className="relative mx-auto max-w-4xl px-6 pt-20 text-center sm:pt-28">
-          <div className="flex justify-center">
-            <Eyebrow>FULL-STACK DEVELOPER &amp; SYSTEM CONSULTANT</Eyebrow>
+        <div className="relative mx-auto grid max-w-6xl items-center gap-12 px-6 py-20 sm:py-24 lg:grid-cols-[0.95fr_1.15fr] lg:gap-8">
+          {/* Left: copy */}
+          <div className="text-center lg:text-left">
+            <div className="flex justify-center lg:justify-start">
+              <Eyebrow>FULL-STACK DEVELOPER &amp; SYSTEM CONSULTANT</Eyebrow>
+            </div>
+
+            <h1 className="mx-auto mt-6 max-w-xl font-display text-4xl leading-[1.2] tracking-tight sm:text-5xl lg:mx-0 lg:text-[2.85rem]">
+              Hi, I&apos;m{" "}
+              <span className="bg-gradient-to-r from-signal to-mint bg-clip-text text-transparent">Ohm</span>
+              <br />
+              I build systems, websites, and apps that actually work
+            </h1>
+
+            <p className="mx-auto mt-6 max-w-md text-base leading-relaxed text-muted sm:text-lg lg:mx-0">
+              I help businesses plan systems, and build websites, web
+              applications, and mobile apps — from architecture design
+              through to real-world deployment. Every project comes with
+              a quality guarantee.
+            </p>
+
+            <div className="mt-10 flex flex-wrap items-center justify-center gap-4 lg:justify-start">
+              <a
+                href="https://line.me/ti/p/zERBmbhlRM"
+                target="_blank"
+                rel="noreferrer"
+                className="rounded-full bg-signal px-8 py-4 text-sm font-semibold text-white shadow-lg shadow-signal/30 transition-transform hover:-translate-y-0.5"
+              >
+                Chat on LINE
+              </a>
+              <a
+                href="#work"
+                className="rounded-full border border-slate-200 px-8 py-4 text-sm font-semibold text-ink transition-colors hover:border-signal/50 hover:text-signal"
+              >
+                View my work
+              </a>
+            </div>
+
+            <div className="mx-auto mt-14 grid max-w-md grid-cols-3 gap-6 border-t border-slate-100 pt-8 lg:mx-0">
+              <div>
+                <div className="font-display text-2xl text-ink">9+</div>
+                <div className="mt-1 text-[12px] text-muted">Projects delivered</div>
+              </div>
+              <div>
+                <div className="font-display text-2xl text-ink">3</div>
+                <div className="mt-1 text-[12px] text-muted">Core tech stacks</div>
+              </div>
+              <div>
+                <div className="font-display text-2xl text-ink">100%</div>
+                <div className="mt-1 text-[12px] text-muted">Quality guaranteed</div>
+              </div>
+            </div>
           </div>
 
-          <h1 className="mx-auto mt-6 max-w-3xl font-display text-4xl leading-[1.2] tracking-tight sm:text-5xl md:text-[3.4rem]">
-            Hi, I&apos;m{" "}
-            <span className="bg-gradient-to-r from-signal to-mint bg-clip-text text-transparent">Ohm</span>
-            <br />
-            I build systems, websites, and apps that actually work
-          </h1>
-
-          <p className="mx-auto mt-6 max-w-xl text-base leading-relaxed text-muted sm:text-lg">
-            I help businesses plan systems, and build websites, web
-            applications, and mobile apps — from architecture design
-            through to real-world deployment. Every project comes with
-            a quality guarantee.
-          </p>
-
-          <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
-            <a
-              href="https://line.me/ti/p/zERBmbhlRM"
-              target="_blank"
-              rel="noreferrer"
-              className="rounded-full bg-signal px-8 py-4 text-sm font-semibold text-white shadow-lg shadow-signal/30 transition-transform hover:-translate-y-0.5"
-            >
-              Chat on LINE
-            </a>
-            <a
-              href="#work"
-              className="rounded-full border border-slate-200 px-8 py-4 text-sm font-semibold text-ink transition-colors hover:border-signal/50 hover:text-signal"
-            >
-              View my work
-            </a>
+          {/* Right: device showcase, part of the same banner */}
+          <div className="float-banner">
+            <DeviceShowcase />
           </div>
-
-          <div className="mx-auto mt-14 grid max-w-md grid-cols-3 gap-6 border-t border-slate-100 pt-8">
-            <div>
-              <div className="font-display text-2xl text-ink">6+</div>
-              <div className="mt-1 text-[12px] text-muted">Projects delivered</div>
-            </div>
-            <div>
-              <div className="font-display text-2xl text-ink">3</div>
-              <div className="mt-1 text-[12px] text-muted">Core tech stacks</div>
-            </div>
-            <div>
-              <div className="font-display text-2xl text-ink">100%</div>
-              <div className="mt-1 text-[12px] text-muted">Quality guaranteed</div>
-            </div>
-          </div>
-        </div>
-
-        {/* Premium device showcase banner */}
-        <div className="relative mx-auto mt-16 max-w-6xl px-6 pb-16 sm:mt-20 sm:pb-24">
-          <DeviceShowcase />
         </div>
       </section>
 
@@ -586,12 +686,12 @@ export default function Home() {
             <div className="max-w-2xl">
               <Eyebrow>WORK</Eyebrow>
               <h2 className="mt-4 font-display text-2xl tracking-tight sm:text-3xl">
-                Past projects — still live and running today
+                Websites and mobile apps, still live and running today
               </h2>
             </div>
             <div className="flex items-center gap-2 text-[13px] font-medium text-muted">
               <StatusDot />
-              {PROJECTS.length} systems currently live
+              {PROJECTS.filter((p) => p.type === "web").length} websites · {PROJECTS.filter((p) => p.type === "app").length} apps live
             </div>
           </div>
 
@@ -612,8 +712,12 @@ export default function Home() {
                 <div className="flex flex-1 flex-col justify-between p-7">
                   <div>
                     <div className="flex items-center justify-between">
-                      <span className="rounded-full bg-panel px-3 py-1 font-mono text-[11px] tracking-wider text-muted">
-                        {p.category}
+                      <span
+                        className={`flex items-center gap-1.5 rounded-full px-3 py-1 font-mono text-[11px] tracking-wider ${
+                          p.type === "app" ? "bg-mint/10 text-mint" : "bg-panel text-muted"
+                        }`}
+                      >
+                        {p.type === "app" && "📱"} {p.category}
                       </span>
                       <span className="flex items-center gap-1.5 text-[11px] font-semibold text-mint">
                         <StatusDot />
@@ -626,7 +730,7 @@ export default function Home() {
                     <p className="mt-2 text-[13px] leading-relaxed text-muted">{p.desc}</p>
                   </div>
                   <div className="mt-5 flex items-center gap-2 border-t border-slate-100 pt-4 text-[13px] font-semibold text-signal">
-                    Visit website
+                    {p.type === "app" ? "View on Google Play" : "Visit website"}
                     <span className="flex h-6 w-6 items-center justify-center rounded-full bg-signal/10 transition-transform group-hover:translate-x-1">
                       →
                     </span>
