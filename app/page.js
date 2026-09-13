@@ -175,6 +175,14 @@ const PROJECTS = [
     type: "app",
     desc: "Companion Android app for ordering concrete, tracking real-time delivery, in-app payment, and a loyalty points program.",
   },
+  {
+    name: "Brewline POS",
+    url: "https://pos-prototype-tp.vercel.app/pos",
+    category: "PROTOTYPE",
+    type: "prototype",
+    image: "/pos-prototype.jpg",
+    desc: "An interactive coffee shop POS prototype — item customization (size, hot/iced/blended, extra shots, syrups, toppings, sweetness level) with a live order summary and checkout flow.",
+  },
 ];
 
 function StatusDot({ className = "" }) {
@@ -357,6 +365,12 @@ function DeviceShowcase() {
   );
 }
 
+const TYPE_LABEL = {
+  web: "Visit website",
+  app: "View on Google Play",
+  prototype: "View live prototype",
+};
+
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [copied, setCopied] = useState(false);
@@ -370,6 +384,10 @@ export default function Home() {
       setCopied(false);
     }
   };
+
+  const webCount = PROJECTS.filter((p) => p.type === "web").length;
+  const appCount = PROJECTS.filter((p) => p.type === "app").length;
+  const prototypeCount = PROJECTS.filter((p) => p.type === "prototype").length;
 
   return (
     <main className="min-h-screen bg-white font-body text-ink overflow-x-hidden">
@@ -489,7 +507,7 @@ export default function Home() {
 
             <div className="mx-auto mt-14 grid max-w-md grid-cols-3 gap-6 border-t border-slate-100 pt-8 lg:mx-0">
               <div>
-                <div className="font-display text-2xl text-ink">9+</div>
+                <div className="font-display text-2xl text-ink">10+</div>
                 <div className="mt-1 text-[12px] text-muted">Projects delivered</div>
               </div>
               <div>
@@ -686,12 +704,12 @@ export default function Home() {
             <div className="max-w-2xl">
               <Eyebrow>WORK</Eyebrow>
               <h2 className="mt-4 font-display text-2xl tracking-tight sm:text-3xl">
-                Websites and mobile apps, still live and running today
+                Websites, apps, and prototypes — still live and running today
               </h2>
             </div>
             <div className="flex items-center gap-2 text-[13px] font-medium text-muted">
               <StatusDot />
-              {PROJECTS.filter((p) => p.type === "web").length} websites · {PROJECTS.filter((p) => p.type === "app").length} apps live
+              {webCount} websites · {appCount} apps · {prototypeCount} prototype
             </div>
           </div>
 
@@ -704,17 +722,32 @@ export default function Home() {
                 rel="noreferrer"
                 className="soft-card group flex flex-col justify-between overflow-hidden rounded-[32px] transition-transform hover:-translate-y-1"
               >
-                <div
-                  className={`h-2 w-full bg-gradient-to-r ${
-                    i % 2 === 0 ? "from-signal to-signal2" : "from-mint to-signal2"
-                  }`}
-                />
+                {p.image ? (
+                  <div className="relative h-40 w-full overflow-hidden bg-panel">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={p.image}
+                      alt={`${p.name} preview`}
+                      className="h-full w-full object-cover object-top transition-transform duration-300 group-hover:scale-105"
+                    />
+                  </div>
+                ) : (
+                  <div
+                    className={`h-2 w-full bg-gradient-to-r ${
+                      i % 2 === 0 ? "from-signal to-signal2" : "from-mint to-signal2"
+                    }`}
+                  />
+                )}
                 <div className="flex flex-1 flex-col justify-between p-7">
                   <div>
                     <div className="flex items-center justify-between">
                       <span
                         className={`flex items-center gap-1.5 rounded-full px-3 py-1 font-mono text-[11px] tracking-wider ${
-                          p.type === "app" ? "bg-mint/10 text-mint" : "bg-panel text-muted"
+                          p.type === "app"
+                            ? "bg-mint/10 text-mint"
+                            : p.type === "prototype"
+                            ? "bg-signal2/10 text-signal2"
+                            : "bg-panel text-muted"
                         }`}
                       >
                         {p.type === "app" && "📱"} {p.category}
@@ -730,7 +763,7 @@ export default function Home() {
                     <p className="mt-2 text-[13px] leading-relaxed text-muted">{p.desc}</p>
                   </div>
                   <div className="mt-5 flex items-center gap-2 border-t border-slate-100 pt-4 text-[13px] font-semibold text-signal">
-                    {p.type === "app" ? "View on Google Play" : "Visit website"}
+                    {TYPE_LABEL[p.type]}
                     <span className="flex h-6 w-6 items-center justify-center rounded-full bg-signal/10 transition-transform group-hover:translate-x-1">
                       →
                     </span>

@@ -14,9 +14,10 @@ Open http://localhost:3000
 
 ## Editing content
 
-- Services / process / projects → edit the SERVICES, PROCESS, PROJECTS constants at the top of `app/page.js`
+- Services / pricing / process / projects → edit the SERVICES, PRICING, PROCESS, PROJECTS constants at the top of `app/page.js`
 - Colors and fonts → `tailwind.config.js` and `app/globals.css`
 - LINE QR code → replace `public/qr-line.jpg`
+- Project preview images → drop a file in `public/` and set `image: "/your-file.jpg"` on that project in the PROJECTS list
 - Email / LINE link → search for `tossapon.ph@gmail.com` and `line.me/ti/p/zERBmbhlRM` in `app/page.js` and replace with your own
 
 ## Deploy to GitHub + Vercel
