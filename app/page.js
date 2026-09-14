@@ -183,6 +183,14 @@ const PROJECTS = [
     image: "/pos-prototype.jpg",
     desc: "An interactive coffee shop POS prototype — item customization (size, hot/iced/blended, extra shots, syrups, toppings, sweetness level) with a live order summary and checkout flow.",
   },
+  {
+    name: "QR Ordering",
+    url: "https://qr-ordering-neon.vercel.app/",
+    category: "PROTOTYPE",
+    type: "prototype",
+    image: "/qr-ordering.jpg",
+    desc: "A dine-in QR ordering prototype for restaurants — customers browse the menu and order by table from their phone, while staff manage the menu, stock status, and tables from an admin dashboard.",
+  },
 ];
 
 function StatusDot({ className = "" }) {
@@ -507,7 +515,7 @@ export default function Home() {
 
             <div className="mx-auto mt-14 grid max-w-md grid-cols-3 gap-6 border-t border-slate-100 pt-8 lg:mx-0">
               <div>
-                <div className="font-display text-2xl text-ink">10+</div>
+                <div className="font-display text-2xl text-ink">11+</div>
                 <div className="mt-1 text-[12px] text-muted">Projects delivered</div>
               </div>
               <div>
@@ -709,7 +717,7 @@ export default function Home() {
             </div>
             <div className="flex items-center gap-2 text-[13px] font-medium text-muted">
               <StatusDot />
-              {webCount} websites · {appCount} apps · {prototypeCount} prototype
+              {webCount} websites · {appCount} apps · {prototypeCount} prototype{prototypeCount !== 1 ? "s" : ""}
             </div>
           </div>
 
