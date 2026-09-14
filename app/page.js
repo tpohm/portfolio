@@ -184,7 +184,7 @@ const PROJECTS = [
     desc: "An interactive coffee shop POS prototype — item customization (size, hot/iced/blended, extra shots, syrups, toppings, sweetness level) with a live order summary and checkout flow.",
   },
   {
-    name: "QR Ordering",
+    name: "QR Ordering Web App",
     url: "https://qr-ordering-neon.vercel.app/",
     category: "PROTOTYPE",
     type: "prototype",
