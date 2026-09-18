@@ -184,12 +184,19 @@ const PROJECTS = [
     desc: "An interactive coffee shop POS prototype — item customization (size, hot/iced/blended, extra shots, syrups, toppings, sweetness level) with a live order summary and checkout flow.",
   },
   {
-    name: "QR Ordering Web App",
+    name: "QR Ordering",
     url: "https://qr-ordering-neon.vercel.app/",
     category: "PROTOTYPE",
     type: "prototype",
     image: "/qr-ordering.jpg",
     desc: "A dine-in QR ordering prototype for restaurants — customers browse the menu and order by table from their phone, while staff manage the menu, stock status, and tables from an admin dashboard.",
+  },
+  {
+    name: "PitchBook",
+    url: "https://sport-chi-lyart.vercel.app/",
+    category: "SAAS / BOOKING",
+    type: "prototype",
+    desc: "A multi-venue sports booking SaaS prototype for football, futsal, and badminton courts — real-time availability, online payment, and separate portals for users, venue admins, and platform super admins.",
   },
 ];
 
@@ -208,6 +215,19 @@ function Eyebrow({ children, tone = "signal" }) {
     <span className={`inline-flex items-center gap-2 rounded-full border px-4 py-1.5 font-mono text-[11px] tracking-widest ${toneCls}`}>
       {children}
     </span>
+  );
+}
+
+function SectionHeader({ eyebrow, tone = "signal", title, subtitle, align = "center" }) {
+  const wrap = align === "center" ? "mx-auto text-center items-center" : "text-left items-start";
+  const dotColor = tone === "mint" ? "bg-mint" : "bg-signal";
+  return (
+    <div className={`mb-14 flex max-w-2xl flex-col ${wrap}`}>
+      <span className={`mb-4 h-8 w-px ${dotColor} opacity-40`} />
+      <Eyebrow tone={tone}>{eyebrow}</Eyebrow>
+      <h2 className="mt-5 font-display text-2xl tracking-tight sm:text-3xl">{title}</h2>
+      {subtitle && <p className="mt-4 text-sm leading-relaxed text-muted sm:text-base">{subtitle}</p>}
+    </div>
   );
 }
 
@@ -415,9 +435,10 @@ export default function Home() {
               <a
                 key={l.href}
                 href={l.href}
-                className="text-[14px] font-medium text-muted transition-colors hover:text-signal"
+                className="group relative text-[12px] font-semibold uppercase tracking-[0.12em] text-muted transition-colors hover:text-signal"
               >
                 {l.label}
+                <span className="absolute -bottom-1 left-0 h-px w-0 bg-signal transition-all duration-300 group-hover:w-full" />
               </a>
             ))}
           </nav>
@@ -468,68 +489,69 @@ export default function Home() {
         )}
       </header>
 
-      {/* HERO — unified banner: copy + device showcase side by side */}
+      {/* HERO — full-bleed centered banner, device showcase overlaps into the next section */}
       <section id="top" className="relative overflow-hidden">
         <div className="blob-field">
-          <div className="blob h-[420px] w-[420px] bg-signal/15 -top-40 -left-32" />
-          <div className="blob h-[380px] w-[380px] bg-mint/15 top-10 right-[-140px]" />
+          <div className="blob h-[520px] w-[520px] bg-signal/15 -top-52 -left-40" />
+          <div className="blob h-[460px] w-[460px] bg-mint/15 top-0 right-[-180px]" />
+          <div className="dot-field absolute inset-0 opacity-40" />
         </div>
 
-        <div className="relative mx-auto grid max-w-6xl items-center gap-12 px-6 py-20 sm:py-24 lg:grid-cols-[0.95fr_1.15fr] lg:gap-8">
-          {/* Left: copy */}
-          <div className="text-center lg:text-left">
-            <div className="flex justify-center lg:justify-start">
-              <Eyebrow>FULL-STACK DEVELOPER &amp; SYSTEM CONSULTANT</Eyebrow>
-            </div>
-
-            <h1 className="mx-auto mt-6 max-w-xl font-display text-4xl leading-[1.2] tracking-tight sm:text-5xl lg:mx-0 lg:text-[2.85rem]">
-              Hi, I&apos;m{" "}
-              <span className="bg-gradient-to-r from-signal to-mint bg-clip-text text-transparent">Ohm</span>
-              <br />
-              I build systems, websites, and apps that actually work
-            </h1>
-
-            <p className="mx-auto mt-6 max-w-md text-base leading-relaxed text-muted sm:text-lg lg:mx-0">
-              I help businesses plan systems, and build websites, web
-              applications, and mobile apps — from architecture design
-              through to real-world deployment. Every project comes with
-              a quality guarantee.
-            </p>
-
-            <div className="mt-10 flex flex-wrap items-center justify-center gap-4 lg:justify-start">
-              <a
-                href="https://line.me/ti/p/zERBmbhlRM"
-                target="_blank"
-                rel="noreferrer"
-                className="rounded-full bg-signal px-8 py-4 text-sm font-semibold text-white shadow-lg shadow-signal/30 transition-transform hover:-translate-y-0.5"
-              >
-                Chat on LINE
-              </a>
-              <a
-                href="#work"
-                className="rounded-full border border-slate-200 px-8 py-4 text-sm font-semibold text-ink transition-colors hover:border-signal/50 hover:text-signal"
-              >
-                View my work
-              </a>
-            </div>
-
-            <div className="mx-auto mt-14 grid max-w-md grid-cols-3 gap-6 border-t border-slate-100 pt-8 lg:mx-0">
-              <div>
-                <div className="font-display text-2xl text-ink">11+</div>
-                <div className="mt-1 text-[12px] text-muted">Projects delivered</div>
-              </div>
-              <div>
-                <div className="font-display text-2xl text-ink">3</div>
-                <div className="mt-1 text-[12px] text-muted">Core tech stacks</div>
-              </div>
-              <div>
-                <div className="font-display text-2xl text-ink">100%</div>
-                <div className="mt-1 text-[12px] text-muted">Quality guaranteed</div>
-              </div>
-            </div>
+        <div className="relative mx-auto max-w-3xl px-6 pt-24 text-center sm:pt-32">
+          <div className="flex flex-col items-center">
+            <span className="mb-4 h-10 w-px bg-signal opacity-40" />
+            <Eyebrow>FULL-STACK DEVELOPER &amp; SYSTEM CONSULTANT</Eyebrow>
           </div>
 
-          {/* Right: device showcase, part of the same banner */}
+          <h1 className="mx-auto mt-6 font-display text-4xl leading-[1.2] tracking-tight sm:text-5xl md:text-[3.4rem]">
+            Hi, I&apos;m{" "}
+            <span className="bg-gradient-to-r from-signal to-mint bg-clip-text text-transparent">Ohm</span>
+            <br />
+            I build systems, websites, and apps that actually work
+          </h1>
+
+          <p className="mx-auto mt-6 max-w-xl text-base leading-relaxed text-muted sm:text-lg">
+            I help businesses plan systems, and build websites, web
+            applications, and mobile apps — from architecture design
+            through to real-world deployment. Every project comes with
+            a quality guarantee.
+          </p>
+
+          <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
+            <a
+              href="https://line.me/ti/p/zERBmbhlRM"
+              target="_blank"
+              rel="noreferrer"
+              className="rounded-full bg-signal px-8 py-4 text-sm font-semibold text-white shadow-lg shadow-signal/30 transition-transform hover:-translate-y-0.5"
+            >
+              Chat on LINE
+            </a>
+            <a
+              href="#work"
+              className="rounded-full border border-slate-200 px-8 py-4 text-sm font-semibold text-ink transition-colors hover:border-signal/50 hover:text-signal"
+            >
+              View my work
+            </a>
+          </div>
+
+          <div className="mx-auto mt-14 grid max-w-md grid-cols-3 gap-6 border-t border-slate-100 pt-8">
+            <div>
+              <div className="font-display text-2xl text-ink">11+</div>
+              <div className="mt-1 text-[12px] text-muted">Projects delivered</div>
+            </div>
+            <div>
+              <div className="font-display text-2xl text-ink">3</div>
+              <div className="mt-1 text-[12px] text-muted">Core tech stacks</div>
+            </div>
+            <div>
+              <div className="font-display text-2xl text-ink">100%</div>
+              <div className="mt-1 text-[12px] text-muted">Quality guaranteed</div>
+            </div>
+          </div>
+        </div>
+
+        {/* Showcase panel — bridges the hero into the next section */}
+        <div className="relative z-10 mx-auto -mb-28 mt-16 max-w-6xl px-6 sm:-mb-36 sm:mt-20">
           <div className="float-banner">
             <DeviceShowcase />
           </div>
@@ -537,14 +559,12 @@ export default function Home() {
       </section>
 
       {/* SERVICES */}
-      <section id="services" className="border-t border-slate-100 bg-panel/50">
-        <div className="mx-auto max-w-6xl px-6 py-20 sm:py-28">
-          <div className="mb-14 max-w-2xl">
-            <Eyebrow>SERVICES</Eyebrow>
-            <h2 className="mt-4 font-display text-2xl tracking-tight sm:text-3xl">
-              Three core services covering everything from planning to delivery
-            </h2>
-          </div>
+      <section id="services" className="border-t border-slate-100 bg-panel/50 pt-40 sm:pt-52">
+        <div className="mx-auto max-w-6xl px-6 pb-20 sm:pb-28">
+          <SectionHeader
+            eyebrow="SERVICES"
+            title="Three core services covering everything from planning to delivery"
+          />
 
           <div className="grid gap-6 md:grid-cols-3">
             {SERVICES.map((s) => (
@@ -571,16 +591,12 @@ export default function Home() {
       {/* PRICING */}
       <section id="pricing" className="border-t border-slate-100">
         <div className="mx-auto max-w-6xl px-6 py-20 sm:py-28">
-          <div className="mb-14 max-w-2xl">
-            <Eyebrow tone="mint">PRICING</Eyebrow>
-            <h2 className="mt-4 font-display text-2xl tracking-tight sm:text-3xl">
-              Website packages, starting from ฿10,000
-            </h2>
-            <p className="mt-4 text-sm leading-relaxed text-muted sm:text-base">
-              Four straightforward packages so you know exactly what you get.
-              Need something in between? Message me and I&apos;ll scope it for you.
-            </p>
-          </div>
+          <SectionHeader
+            eyebrow="PRICING"
+            tone="mint"
+            title="Website packages, starting from ฿10,000"
+            subtitle="Four straightforward packages so you know exactly what you get. Need something in between? Message me and I'll scope it for you."
+          />
 
           <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
             {PRICING.map((tier) => (
@@ -646,14 +662,12 @@ export default function Home() {
       {/* PROCESS */}
       <section id="process" className="border-t border-slate-100 bg-panel/50">
         <div className="mx-auto max-w-6xl px-6 py-20 sm:py-28">
-          <div className="mb-16 max-w-2xl">
-            <Eyebrow>PROCESS</Eyebrow>
-            <h2 className="mt-4 font-display text-2xl tracking-tight sm:text-3xl">
-              A 5-stage process, from your idea to something real people can use
-            </h2>
-          </div>
+          <SectionHeader
+            eyebrow="PROCESS"
+            title="A 5-stage process, from your idea to something real people can use"
+          />
 
-          <div className="relative grid gap-10 sm:grid-cols-5 sm:gap-4">
+          <div className="relative mt-4 grid gap-10 sm:grid-cols-5 sm:gap-4">
             <div className="timeline-line absolute left-0 right-0 top-6 hidden h-[2px] sm:block" />
             {PROCESS.map((p) => (
               <div key={p.step} className="relative flex flex-col items-center text-center sm:items-start sm:text-left">
@@ -667,6 +681,21 @@ export default function Home() {
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* PHILOSOPHY — editorial pull-quote band */}
+      <section className="border-t border-slate-100">
+        <div className="mx-auto max-w-3xl px-6 py-20 text-center sm:py-28">
+          <span className="mx-auto mb-6 flex h-10 w-10 items-center justify-center rounded-full bg-mint/10 text-lg text-mint">
+            &ldquo;
+          </span>
+          <p className="font-display text-2xl leading-snug tracking-tight text-ink sm:text-3xl">
+            Good systems are invisible. Good software just works — that&apos;s
+            what I aim for on every project, big or small.
+          </p>
+          <div className="mx-auto mt-6 h-px w-10 bg-signal opacity-40" />
+          <p className="mt-4 text-sm font-semibold text-muted">— Ohm</p>
         </div>
       </section>
 
@@ -708,17 +737,13 @@ export default function Home() {
       {/* WORK */}
       <section id="work" className="border-t border-slate-100 bg-panel/50">
         <div className="mx-auto max-w-6xl px-6 py-20 sm:py-28">
-          <div className="mb-14 flex flex-wrap items-end justify-between gap-4">
-            <div className="max-w-2xl">
-              <Eyebrow>WORK</Eyebrow>
-              <h2 className="mt-4 font-display text-2xl tracking-tight sm:text-3xl">
-                Websites, apps, and prototypes — still live and running today
-              </h2>
-            </div>
-            <div className="flex items-center gap-2 text-[13px] font-medium text-muted">
-              <StatusDot />
-              {webCount} websites · {appCount} apps · {prototypeCount} prototype{prototypeCount !== 1 ? "s" : ""}
-            </div>
+          <SectionHeader
+            eyebrow="WORK"
+            title="Websites, apps, and prototypes — still live and running today"
+          />
+          <div className="-mt-8 mb-14 flex items-center justify-center gap-2 text-[13px] font-medium text-muted">
+            <StatusDot />
+            {webCount} websites · {appCount} apps · {prototypeCount} prototype{prototypeCount !== 1 ? "s" : ""}
           </div>
 
           <div className="grid gap-6 sm:grid-cols-2">
@@ -791,16 +816,12 @@ export default function Home() {
         </div>
 
         <div className="relative mx-auto max-w-6xl px-6 py-20 sm:py-28">
-          <div className="mb-14 max-w-2xl">
-            <Eyebrow tone="mint">CONTACT</Eyebrow>
-            <h2 className="mt-4 font-display text-2xl tracking-tight sm:text-3xl">
-              Let&apos;s talk about your project
-            </h2>
-            <p className="mt-4 text-sm leading-relaxed text-muted sm:text-base">
-              Reach out on LINE or email — quick replies, and an initial
-              consultation is free.
-            </p>
-          </div>
+          <SectionHeader
+            eyebrow="CONTACT"
+            tone="mint"
+            title="Let's talk about your project"
+            subtitle="Reach out on LINE or email — quick replies, and an initial consultation is free."
+          />
 
           <div className="grid gap-6 md:grid-cols-[1fr_1fr_auto]">
             <a
