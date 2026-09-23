@@ -199,6 +199,14 @@ const PROJECTS = [
     type: "prototype",
     desc: "A multi-venue sports booking SaaS prototype for football, futsal, and badminton courts — real-time availability, online payment, and separate portals for users, venue admins, and platform super admins.",
   },
+  {
+    name: "OrthoSim",
+    url: "https://orthosim-prototype.vercel.app/",
+    category: "PROTOTYPE",
+    type: "prototype",
+    image: "/orthosim.jpg",
+    desc: "A before/after facial-profile simulator for orthodontic clinics — photograph the patient's side profile, mark 3 reference points, and preview how the jawline shifts after treatment based on the clinic's own statistics. Works on iPad, tablet, phone, and desktop.",
+  },
 ];
 
 function StatusDot({ className = "" }) {
@@ -405,6 +413,7 @@ const MARQUEE_NAMES = [
   "Brewline POS",
   "QR Ordering",
   "PitchBook",
+  "OrthoSim",
 ];
 
 function MarqueeRow() {
@@ -531,7 +540,7 @@ function HeroBanner() {
               className="banner-anim font-extrabold leading-none text-white"
               style={{ fontSize: "clamp(30px,3vw,40px)", animation: "tick 3.4s 1.6s ease-in-out infinite" }}
             >
-              11+
+              12+
             </div>
             <div className="mt-2 text-[11px] font-extrabold uppercase tracking-[0.1em] text-white/80">Projects delivered</div>
           </div>
