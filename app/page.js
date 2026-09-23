@@ -3,6 +3,7 @@
 import { useState } from "react";
 
 const NAV_LINKS = [
+  { href: "#showcase", label: "Showcase" },
   { href: "#services", label: "Services" },
   { href: "#pricing", label: "Pricing" },
   { href: "#process", label: "Process" },
@@ -393,6 +394,172 @@ function DeviceShowcase() {
   );
 }
 
+const MARQUEE_NAMES = [
+  "TUTORRUS",
+  "THAC",
+  "Pink School of Finance",
+  "Dhipaya Group Holdings",
+  "Bua Concrete",
+  "CCC — Calories Credit Challenge",
+  "Smart People Management",
+  "Brewline POS",
+  "QR Ordering",
+  "PitchBook",
+];
+
+function MarqueeRow() {
+  return (
+    <div className="flex shrink-0 gap-9 whitespace-nowrap pr-9 text-[14px] font-extrabold uppercase tracking-[0.12em] text-white">
+      {MARQUEE_NAMES.map((n, i) => (
+        <span key={i} className="flex items-center gap-9">
+          {n}
+          <span className="text-[#ec3013]">◦</span>
+        </span>
+      ))}
+    </div>
+  );
+}
+
+function HeroBanner() {
+  return (
+    <div
+      className="relative w-full overflow-hidden"
+      style={{ background: "#ec3013", fontFamily: "'Archivo', system-ui, sans-serif" }}
+    >
+      {/* Animated grid rule-lines */}
+      <div className="pointer-events-none absolute inset-0 grid grid-cols-6">
+        {[0.05, 0.14, 0.23, 0.32, 0.41].map((delay, i) => (
+          <div
+            key={i}
+            className="banner-anim border-r border-white/[0.28]"
+            style={{
+              transformOrigin: "top",
+              animation: `ruleIn 1s ${delay}s cubic-bezier(.2,.8,.2,1) both`,
+            }}
+          />
+        ))}
+        <div />
+      </div>
+
+      {/* Top status row */}
+      <div className="relative flex flex-wrap items-center justify-between gap-6 px-5 pb-5 pt-8 sm:px-9 sm:pt-11">
+        <div className="banner-anim flex items-center gap-2.5" style={{ animation: "fadeUp 0.6s both" }}>
+          <span
+            className="banner-anim h-[9px] w-[9px] shrink-0 bg-white"
+            style={{ animation: "blink 1.6s steps(1,end) infinite" }}
+          />
+          <span className="text-[12px] font-extrabold uppercase tracking-[0.14em] text-white">
+            Full-stack developer &amp; system consultant
+          </span>
+        </div>
+        <div
+          className="banner-anim text-[12px] font-extrabold uppercase tracking-[0.14em] text-white/80"
+          style={{ animation: "fadeUp 0.6s 0.1s both" }}
+        >
+          Ω Ohm / dev.systems
+        </div>
+      </div>
+
+      {/* Headline */}
+      <div className="relative px-5 pb-8 sm:px-9">
+        <div
+          className="banner-anim mb-3.5 font-extrabold leading-[1] tracking-[-0.02em] text-white/80"
+          style={{ fontSize: "clamp(22px,2.6vw,34px)", animation: "wipeIn 0.8s 0.1s cubic-bezier(.2,.8,.2,1) both" }}
+        >
+          Hi, I&apos;m Ohm
+        </div>
+        <div
+          className="banner-anim font-extrabold leading-[0.95] tracking-[-0.04em] text-white"
+          style={{ fontSize: "clamp(40px,7.6vw,104px)", animation: "wipeIn 0.9s 0.24s cubic-bezier(.2,.8,.2,1) both" }}
+        >
+          I build systems,
+        </div>
+        <div
+          className="banner-anim font-extrabold leading-[0.95] tracking-[-0.04em] text-white"
+          style={{ fontSize: "clamp(40px,7.6vw,104px)", animation: "wipeIn 0.9s 0.42s cubic-bezier(.2,.8,.2,1) both" }}
+        >
+          websites, and apps
+        </div>
+        <div className="flex items-baseline gap-3 sm:gap-5">
+          <span
+            className="banner-anim font-extrabold leading-[0.95] tracking-[-0.04em]"
+            style={{ fontSize: "clamp(40px,7.6vw,104px)", color: "#201e1d", animation: "wipeIn 0.9s 0.6s cubic-bezier(.2,.8,.2,1) both" }}
+          >
+            that actually work
+          </span>
+          <span
+            className="banner-anim shrink-0"
+            style={{
+              width: "clamp(8px,1.2vw,16px)",
+              height: "clamp(34px,6vw,82px)",
+              background: "#201e1d",
+              animation: "blink 1.1s steps(1,end) 1.5s infinite",
+            }}
+          />
+        </div>
+      </div>
+
+      {/* Copy + CTAs / stats row */}
+      <div className="relative flex flex-wrap border-t-2 border-white/60">
+        <div className="flex flex-[1_1_440px] flex-col gap-5 border-white/60 px-5 py-7 sm:border-r-2 sm:px-9 sm:py-8">
+          <p
+            className="banner-anim m-0 max-w-[520px] text-[16px] leading-relaxed text-white"
+            style={{ animation: "fadeUp 0.7s 0.7s both" }}
+          >
+            I help businesses plan systems, and build websites, web
+            applications, and mobile apps — from architecture design
+            through to real-world deployment.
+          </p>
+          <div className="banner-anim flex flex-wrap gap-3" style={{ animation: "fadeUp 0.7s 0.82s both" }}>
+            <a
+              href="https://line.me/ti/p/zERBmbhlRM"
+              target="_blank"
+              rel="noreferrer"
+              className="banner-btn-primary inline-flex items-center px-6 py-[15px] text-[14px] font-extrabold tracking-[0.02em]"
+            >
+              Chat on LINE
+            </a>
+            <a href="#work" className="banner-btn-outline inline-flex items-center px-6 py-[15px] text-[14px] font-extrabold tracking-[0.02em]">
+              View my work →
+            </a>
+          </div>
+        </div>
+
+        <div className="grid flex-[1_1_360px] grid-cols-3">
+          <div className="banner-anim border-r-2 border-white/60 px-5 py-7" style={{ animation: "fadeUp 0.7s 0.7s both" }}>
+            <div
+              className="banner-anim font-extrabold leading-none text-white"
+              style={{ fontSize: "clamp(30px,3vw,40px)", animation: "tick 3.4s 1.6s ease-in-out infinite" }}
+            >
+              11+
+            </div>
+            <div className="mt-2 text-[11px] font-extrabold uppercase tracking-[0.1em] text-white/80">Projects delivered</div>
+          </div>
+          <div className="banner-anim border-r-2 border-white/60 px-5 py-7" style={{ animation: "fadeUp 0.7s 0.82s both" }}>
+            <div className="font-extrabold leading-none text-white" style={{ fontSize: "clamp(30px,3vw,40px)" }}>3</div>
+            <div className="mt-2 text-[11px] font-extrabold uppercase tracking-[0.1em] text-white/80">Core tech stacks</div>
+          </div>
+          <div className="banner-anim px-5 py-7" style={{ animation: "fadeUp 0.7s 0.94s both" }}>
+            <div className="font-extrabold leading-none text-white" style={{ fontSize: "clamp(30px,3vw,40px)" }}>100%</div>
+            <div className="mt-2 text-[11px] font-extrabold uppercase tracking-[0.1em] text-white/80">Quality guaranteed</div>
+          </div>
+        </div>
+      </div>
+
+      {/* Scrolling marquee of project names */}
+      <div
+        className="banner-anim relative flex h-[58px] items-center overflow-hidden"
+        style={{ background: "#201e1d", transformOrigin: "left", animation: "bandGrow 0.8s 0.6s cubic-bezier(.2,.8,.2,1) both" }}
+      >
+        <div className="flex whitespace-nowrap" style={{ animation: "marquee 32s linear infinite" }}>
+          <MarqueeRow />
+          <MarqueeRow />
+        </div>
+      </div>
+    </div>
+  );
+}
+
 const TYPE_LABEL = {
   web: "Visit website",
   app: "View on Google Play",
@@ -489,69 +656,23 @@ export default function Home() {
         )}
       </header>
 
-      {/* HERO — full-bleed centered banner, device showcase overlaps into the next section */}
-      <section id="top" className="relative overflow-hidden">
+      {/* HERO — bold banner */}
+      <section id="top">
+        <HeroBanner />
+      </section>
+
+      {/* SHOWCASE — device mockup, its own section under the banner */}
+      <section id="showcase" className="relative overflow-hidden border-t border-slate-100">
         <div className="blob-field">
-          <div className="blob h-[520px] w-[520px] bg-signal/15 -top-52 -left-40" />
-          <div className="blob h-[460px] w-[460px] bg-mint/15 top-0 right-[-180px]" />
-          <div className="dot-field absolute inset-0 opacity-40" />
+          <div className="blob h-[340px] w-[340px] bg-signal/15 top-0 left-[-120px]" />
+          <div className="blob h-[300px] w-[300px] bg-mint/15 bottom-0 right-[-120px]" />
         </div>
-
-        <div className="relative mx-auto max-w-3xl px-6 pt-24 text-center sm:pt-32">
-          <div className="flex flex-col items-center">
-            <span className="mb-4 h-10 w-px bg-signal opacity-40" />
-            <Eyebrow>FULL-STACK DEVELOPER &amp; SYSTEM CONSULTANT</Eyebrow>
-          </div>
-
-          <h1 className="mx-auto mt-6 font-display text-4xl leading-[1.2] tracking-tight sm:text-5xl md:text-[3.4rem]">
-            Hi, I&apos;m{" "}
-            <span className="bg-gradient-to-r from-signal to-mint bg-clip-text text-transparent">Ohm</span>
-            <br />
-            I build systems, websites, and apps that actually work
-          </h1>
-
-          <p className="mx-auto mt-6 max-w-xl text-base leading-relaxed text-muted sm:text-lg">
-            I help businesses plan systems, and build websites, web
-            applications, and mobile apps — from architecture design
-            through to real-world deployment. Every project comes with
-            a quality guarantee.
-          </p>
-
-          <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
-            <a
-              href="https://line.me/ti/p/zERBmbhlRM"
-              target="_blank"
-              rel="noreferrer"
-              className="rounded-full bg-signal px-8 py-4 text-sm font-semibold text-white shadow-lg shadow-signal/30 transition-transform hover:-translate-y-0.5"
-            >
-              Chat on LINE
-            </a>
-            <a
-              href="#work"
-              className="rounded-full border border-slate-200 px-8 py-4 text-sm font-semibold text-ink transition-colors hover:border-signal/50 hover:text-signal"
-            >
-              View my work
-            </a>
-          </div>
-
-          <div className="mx-auto mt-14 grid max-w-md grid-cols-3 gap-6 border-t border-slate-100 pt-8">
-            <div>
-              <div className="font-display text-2xl text-ink">11+</div>
-              <div className="mt-1 text-[12px] text-muted">Projects delivered</div>
-            </div>
-            <div>
-              <div className="font-display text-2xl text-ink">3</div>
-              <div className="mt-1 text-[12px] text-muted">Core tech stacks</div>
-            </div>
-            <div>
-              <div className="font-display text-2xl text-ink">100%</div>
-              <div className="mt-1 text-[12px] text-muted">Quality guaranteed</div>
-            </div>
-          </div>
-        </div>
-
-        {/* Showcase panel — bridges the hero into the next section */}
-        <div className="relative z-10 mx-auto -mb-28 mt-16 max-w-6xl px-6 sm:-mb-36 sm:mt-20">
+        <div className="relative mx-auto max-w-6xl px-6 py-20 sm:py-28">
+          <SectionHeader
+            eyebrow="SHOWCASE"
+            title="One codebase, every screen size"
+            subtitle="Every site is designed mobile-first and tested across laptop, tablet, and phone before it ships."
+          />
           <div className="float-banner">
             <DeviceShowcase />
           </div>
@@ -559,8 +680,8 @@ export default function Home() {
       </section>
 
       {/* SERVICES */}
-      <section id="services" className="border-t border-slate-100 bg-panel/50 pt-40 sm:pt-52">
-        <div className="mx-auto max-w-6xl px-6 pb-20 sm:pb-28">
+      <section id="services" className="border-t border-slate-100 bg-panel/50">
+        <div className="mx-auto max-w-6xl px-6 py-20 sm:py-28">
           <SectionHeader
             eyebrow="SERVICES"
             title="Three core services covering everything from planning to delivery"
